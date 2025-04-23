@@ -1,5 +1,7 @@
+'use client';
+
 import { ChangeEvent, useState } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
 import { LoginRequest } from "@/types";
 
