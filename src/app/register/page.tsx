@@ -1,5 +1,6 @@
 'use client'
 
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import api from "@/lib/api"
 import { RegisterRequest } from "@/types";
 import { useState } from "react";
@@ -24,12 +25,14 @@ export default function RegisterPage() {
     };
 
     return (
-        <div>
-            <h1>회원가입</h1>
-            <input name="username" placeholder="아이디" onChange={handleChange} />
-            <input name="email" placeholder="이메일" onChange={handleChange} />
-            <input name="password" placeholder="비밀번호" type="password" onChange={handleChange} />
-            <button onClick={handleSubmit}>가입하기</button>
-        </div>
+        <Container maxWidth="sm" sx={{ mt: 8 }}>
+            <Typography variant="h4" gutterBottom>회원가입</Typography>
+            <Box display="flex" flexDirection="column" gap={2}>
+                <TextField name="username" label="아이디" fullWidth onChange={handleChange} />
+                <TextField name="email" label="이메일" type="email" fullWidth onChange={handleChange} />
+                <TextField name="password" label="비밀번호" type="password" fullWidth onChange={handleChange} />
+                <Button variant="contained" onClick={handleSubmit}>회원가입</Button>
+            </Box>
+        </Container>
     )
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { ChangeEvent, useState } from "react";
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
@@ -23,12 +24,21 @@ export default function LoginPage() {
         }
     };
 
+    const goToRegister = () => {
+        router.push("/register");
+    };
+
     return (
-        <div>
-            <h1>로그인</h1>
-            <input name="login" placeholder="ID or Email" onChange={handleChange} />
-            <input name="password" type="password" placeholder="Password" onChange={handleChange} />
-            <button onClick={handleLogin}>로그인</button>
-        </div>
-    )
+        <Container maxWidth="sm" sx={{ mt: 8 }}>
+            <Box display="flex" justifyContent="flex-end" mb={2}>
+                <button onClick={goToRegister}>회원가입</button>
+            </Box>
+            <Typography variant="h4" gutterBottom>로그인</Typography>
+            <Box display="flex" flexDirection="column" gap={2}>
+                <TextField name="login" label="아이디 또는 이메일" fullWidth onChange={handleChange} />
+                <TextField name="password" label="비밀번호" type="password" fullWidth onChange={handleChange} />
+                <Button variant="contained" onClick={handleLogin}>로그인</Button>
+            </Box>
+        </Container>
+    );
 }
